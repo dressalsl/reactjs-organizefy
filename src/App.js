@@ -1,9 +1,16 @@
 import React from 'react';
 import GlobalStyle from './styles/global';
 
+import Header from './components/header';
+import Board from './components/board';
+
 function App() {
   return (
-    <GlobalStyle></GlobalStyle>
+    <>
+      <Header></Header>
+      <GlobalStyle></GlobalStyle>
+      <Board></Board>
+    </>  
   );
 }
 
