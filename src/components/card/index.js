@@ -8,7 +8,7 @@ export default function Card({ data, index, listIndex }) {
     const ref = useRef();
     const { move } = useContext(BoardContext);
 
-    const [{isDragging}, dragRef] = useDrag({
+    const [{ isDragging }, dragRef] = useDrag({
         item: { type:'CARD', index, listIndex},
         collect: monitor => ({
             isDragging: monitor.isDragging(),
@@ -24,7 +24,7 @@ export default function Card({ data, index, listIndex }) {
             const draggedIndex = item.index;
             const targetIndex = index;
             
-            if ( draggedIndex === targetIndex) {
+            if ( draggedIndex === targetIndex  && draggedListIndex === targetListIndex) {
                 return;
             }
 
@@ -52,7 +52,7 @@ export default function Card({ data, index, listIndex }) {
     dragRef(dropRef(ref));
 
     return (
-        <Container ref={dragRef} isDragging={isDragging}>
+        <Container ref={ref} isDragging={isDragging}>
             <header>
                 {data.labels.map(label => <Label key={label} color={label}></Label> )}
             </header>
